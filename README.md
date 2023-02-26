@@ -1,16 +1,24 @@
-# Machine learning and Databases at CAUP/IA in 2019
+# Machine learning and Databases at CAUP/IA in 2023
 
 
-We have started!
 
 ## Course overview
 
-This course is an advanced course at CAUP during March and April 2019. Lectures will take place on Mondays at 14:00 while practical classes will take place on Thursdays at 10:00. Both have duration 2 hours with a short break.
+This course is part of the doctoral program in astronomy at the
+[Department of Physics and Astronomy](https://www.fc.up.pt/dfa/) at the [University of Porto](https://www.up.pt/portal/en/). The
+course title is ["Topics on Methods and Modelling in
+Astrophysics"](https://sigarra.up.pt/fcup/en/UCURR_GERAL.FICHA_UC_VIEW?pv_ocorrencia_id=508992). The
+course is divided in two parts. March 6-10 we have lectures from 10:00
+to 13:00 each day, while March 13-17 is dedicated to a practical
+problemset provided in the lectures.
 
-The aim of this course is to get a good *practical* grasp of machine learning. I will not spend a lot of time on algorithm details but more on how to use these in python and try to discuss what methods are useful for what type of scientific question/research goal.
+The aim of this course is to get a good *practical* grasp of machine
+learning. I will not spend a lot of time on algorithm details but more
+on how to use these in python and try to discuss what methods are
+useful for what type of scientific question/research goal.
 
 <dl>
-<dt>March 4 - Managing data and simple regression</dt>
+<dt>March 6 - Managing data and simple regression</dt>
   <dd>
    <ul>
      <li> Covering git and SQL</li>
@@ -19,7 +27,7 @@ The aim of this course is to get a good *practical* grasp of machine learning. I
   </dd>
 
 
-<dt>March 11 - Visualisation and inference methods</dt>
+<dt>March 7 - Visualisation and inference methods</dt>
   <dd>
    <ul>
      <li>  Visualisation of data, do's and don't's </li>
@@ -29,7 +37,7 @@ The aim of this course is to get a good *practical* grasp of machine learning. I
    </ul>
   </dd>
 
-<dt>March 18 - Density estimation and model choice</dt>
+<dt>March 8 - Density estimation and model choice</dt>
   <dd>
    <ul>
      <li>  Estimating densities, parametric & non-parametric </li>
@@ -39,7 +47,7 @@ The aim of this course is to get a good *practical* grasp of machine learning. I
    </ul>
   </dd>
 
-<dt>March 25 - Dimensional reduction</dt>
+<dt>March 9 - Dimensional reduction</dt>
   <dd>
    <ul>
      <li>  Standardising data. </li>
@@ -48,7 +56,7 @@ The aim of this course is to get a good *practical* grasp of machine learning. I
    </ul>
   </dd>
 
-<dt>April 8 - Ensemble methods, neural networks, deep learning</dt>
+<dt>April 10 - Ensemble methods, neural networks, deep learning</dt>
   <dd>
    <ul>
      <li>  Local regression methods </li>
@@ -87,21 +95,14 @@ Below you can find some books of use. The links from the titles get you to the A
 - ["Bayesian Models for Astrophysical Data", Hilbe, Souza & Ishida](https://www.amazon.com/Bayesian-Models-Astrophysical-Data-Python/dp/1107133084) is a good reference book for a range of Bayesian techniques and is a good way to learn about different modelling frameworks for Bayesian inference. 
 
 
-## Making a copy of the repository that you can edit
-
-In this case you will want to *fork* the repository rather than just clone this. You can follow the instructions below (credit to Alexander Mechev for this) to create a fork of the repository:
-
--    Make a github account and log in.
--    Click on the 'Fork' at the top right. This will create a 'fork' on your own account. That means that you now have the latest commit of the repo and its history in your control. If you've tried to 'git push' to the MLD2019 repo you'd have noticed that you don't have access to it.
--    Once it's forked, you can go to your github profile and you'll see a MLD2019 repo. Go to it and get the .git link (green button)
--    Somewhere on your machine, git clone git clone https://github.com/[YOUR_GIT_UNAME]/MLD2019.git. You also need to enter the directory
--    Add our repo as an upstream. That way you can get (pull) new updates: git remote add upstream https://github.com/jbrinchmann/MLD2019.git
--    git remote -v should give: origin https://github.com/[YOUR_GIT_UNAME]/MLD2019.git (fetch) origin https://github.com/[YOUR_GIT_UNAME]/MLD2019.git (push) upstream https://github.com/jbrinchmann/MLD2019.git (fetch) upstream https://github.com/jbrinchmann/MLD2019.git (push)
--    Now you're ready to add files and folders to your local fork. Use git add, git commit and git push (origin master) to add your assignments.
-
 ## Software you need for the course
 
-The course will make use of python throughout, and for this you need a recent version of python installed. I use python 3 by default but will try to make all scripts compatible with python 2 and python 3. For python you will need (well, I recommend it at least) at least these libraries installed:
+The course will make use of python throughout, and for this you need a
+recent version of python installed. I use python 3 by default and
+while some scripts will work for python 2, there is really no good
+reason for continuing to use python 2 (with some exception for
+important legacy code). For python you will need (well, I recommend it
+at least) at least these libraries installed:
 
 - [numpy](http://www.numpy.org/) - for numerical calculations
 - [astropy](http://www.astropy.org/) - because we are astronomers
@@ -111,91 +112,158 @@ The course will make use of python throughout, and for this you need a recent ve
 - [pandas](https://pandas.pydata.org/) - nice handling of data
 - [seaborn](https://seaborn.pydata.org/) - nice plots
 
-(the last two are really "nice to have" but if you can install the others then these are easy).
+(the last two are really "nice to have" but if you can install the
+others then these are easy). 
 
-You should also get `astroML` which has a nice web page at XX and a git repository at [https://github.com/astroML/astroML](https://github.com/astroML/astroML) 
+Personally I use the
+[Anaconda](https://www.anaconda.com/products/distribution) Python
+distribution to manage my python installation and to create
+environments. I strongly recommend using environments (often called
+virtual environments) for this course. These come in two main
+flavours, the built-in `venv` virtual environments, or the ones
+provided by `conda`. See for instance [this
+overview](https://www.machinelearningplus.com/deployment/conda-create-environment-and-everything-you-need-to-know-to-manage-conda-virtual-environment/)
+for instance (which is focused on `conda`) or [this
+one](https://realpython.com/python-virtual-environments-a-primer/) for
+a more `venv` focused intro. Since I use `conda` my examples will use
+that but it is pretty easy to translate to `venv` instead. 
 
-It turns out that the astroML distribution that is often picked up when you install it using a package manager (maybe also pip?) is outdated and does not work with new versions of sklearn. To check whether you have a problem, try:
-
-`from astroML.datasets import fetch_sdss_sspp`
-
-If this crashes with a complaint about a module GMM, you have the old version. To fix this the best way is probably to check out the git version of astroML linked above using e.g.:
-
-`git clone https://github.com/astroML/astroML.git`
-
-
-
-To use astroML in Anaconda you need to get it from the astropy channel. For a one-off you can do:
-
-`conda install -c astropy astroML`
-
-If you want to add the astropy channel permanently (which probably is a good idea), you can do:
-
-`conda config --add channels astropy`
-
-## Lecture 1 - links and information
-
-The slides are available in the Lectures directory. You can find some files for creating tables in the ProblemSets/MakeTables directory. 
+To set things up for this course, what I did (after installing
+anaconda) was
+```
+# Create an environment
+> conda create -n mld2023 numpy scipy scikit-learn pandas seabornmatplotlib jupyter pip
+...
+> conda activate mld2023
+```
+The first command is only done once, the second is done every time you
+start a new shell. 
 
 
-## Lecture 2-4
+You should also get `astroML` which has a nice web page at
+[http://www.astroml.org/](http://www.astroml.org/) and a git
+repository at
+[https://github.com/astroML/astroML](https://github.com/astroML/astroML). This
+is the website associated to the "Statistics, Data Mining, and Machine
+Learning in Astronomy" book mentioned above. They also provide clear
+[installation
+instructions](http://www.astroml.org/user_guide/installation.html). Personally
+I used their "From Source" instructions but it is probably in general
+easier to use the "Conda" instructions if you use Anaconda and the
+"Python Package Index" instructions otherwise. 
 
-The slides are available in the Lectures directory.
+
+
+## Making a copy of the repository that you can edit
+
+In this case you will want to *fork* the repository rather than just
+clone this. You can follow the instructions below (credit to Alexander
+Mechev for a first version of this) to create a fork of the repository:
+
+-    Make a github account and log in.
+-    Go to the [MLD2023
+     repo](https://github.com/jbrinchmann/MLD2023). 
+-    Click on the 'Fork' at the top right. This will create a 'fork'
+     on your own account. That means that you now have the latest
+     commit of the repo and its history in your control. If you've
+     tried to 'git push' to the MLD2023 repo you'd have noticed that
+     you don't have access to it.
+-    Once it's forked, you can go to your github profile and you'll
+     see a MLD2023 repo. Go to it and get the .git link (green button)
+-    Somewhere on your machine, do
+
+```  git clone git clone
+https://github.com/[YOUR_GIT_UNAME]/MLD2023.git
+
+```
+- 	 Move into the directory by doing `> cd MLD2023`. 
+-    Add my repo as an upstream. That way you can get (pull) new
+     updates: 
+	 ```git remote add upstream
+     https://github.com/jbrinchmann/MLD2023.git
+	 ```
+-    git remote -v should give: origin
+     https://github.com/[YOUR_GIT_UNAME]/MLD2023.git (fetch) origin
+     https://github.com/[YOUR_GIT_UNAME]/MLD2023.git (push) upstream
+     https://github.com/jbrinchmann/MLD2023.git (fetch) upstream
+     https://github.com/jbrinchmann/MLD2023.git (push)
+-    Now you're ready to add files and folders to your local fork. Use
+     `git add`, `git commit` and `git push`. To add store this work online.
+
+## Lectures
+
+The slides are available in the Lectures directory. You can find some
+files for creating tables in the ProblemSets/MakeTables directory.
+
 
 # Getting ready for deep learning in python
 
-In the final problem class we will look at using deep learning in python. There are quite a few libraries for this around but we will use the most commonly used one, [TensorFlow](https://www.tensorflow.org/) and we will use the [keras](https://keras.io/) python package for interacting with TensorFlow. Keras is a high-level interface (and can also use other libraries, [Theano](https://github.com/Theano/Theano) and [CNTK](https://github.com/Microsoft/cntk), in addition to TensorFlow). 
+In the final problem class we will look at using deep learning in
+python. In order to follow the examples, you will need to have some
+software installed. This is more involved than what we had above so
+might take some time to get working.
 
-There are many pages that detail the installation of these packages and what you need for them. A good one with a bias towards Windows is [this one](https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10). I will give a very brief summary here of how I set things up. This is not optimised for Graphical Processing Unit (GPU) work so for serious future work you will need to adjust this.
+
+There are quite a few libraries for this around but we will
+use the most commonly used one,
+[TensorFlow](https://www.tensorflow.org/) and we will use the
+[keras](https://keras.io/) python package for interacting with
+TensorFlow. Keras is a high-level interface (and can also use other
+libraries, [Theano](https://github.com/Theano/Theano) and
+[CNTK](https://github.com/Microsoft/cntk), in addition to TensorFlow).
+
+There are many pages that detail the installation of these packages
+and what you need for them. A good one with a bias towards Windows is
+[this
+one](https://towardsdatascience.com/setup-an-environment-for-machine-learning-and-deep-learning-with-anaconda-in-windows-5d7134a3db10). I
+will give a very brief summary here of how I set things up. This is
+not optimised for Graphical Processing Unit (GPU) work so for serious
+future work you will need to adjust this.
 
 ### Create an environment in anaconda 
 
-I am going to assume you use anaconda for your python environment. If not, you need to change this section a bit - use virtualenv instead of setting up a conda environment.  It is definitely better to keep your TensorFlow/keras etc setup out of your default Python work environment. Most of the packages are also installed with `pip` rather than conda, so what I use is
+I am going to assume you use anaconda for your python environment. If
+not, you need to change this section a bit - use virtualenv instead of
+setting up a conda environment.  It is definitely better to keep your
+TensorFlow/keras etc setup out of your default Python work
+environment. Most of the packages are also installed with `pip` rather
+than conda, so what I use in this case is:
 
-`conda create -n tensorflow pip python=3.6`
+```
+> conda create -n tensorflow pip
+<...>
+> activate tensorflow
+```
+It is important to activate the environment, otherwise you'll mess up
+your default conda environment!  Check that your prompt says
+`[tensorflow]` before continuing (see below):
 
-This creates an environment called tensorflow which uses python 3.6 and `pip` for installation. To use this we need to activate it first:
-
-`activate tensorflow`
-
-(assuming you use bash - I do not so I need to do some more tricks. Use bash). Your prompt should not change to include `(tensorflow)`.
+```
+[tensorflow] > pip install matplotlib astropy pandas scikit-learn seaborn jupyter astroML
+<...>
+[tensorflow] > 
+```
 
 
 ### Install tensorflow and keras
 
-I went for the simplest approach here:
+Tensorflow is a large package - 244 Mb in my installation and it
+requires a fair number of additional packages so this can take a bit
+of time. 
 
-`pip install --upgrade tensorflow`
+```
+[tensorflow] > pip install --upgrade tensorflow
+<...>
+[tensorflow] > pip install --upgrade keras
+```
 
-This takes a while - the package is fairly large, 71.6Mb in my installation, and it requires a fair number of additional packages.
-
-`pip install keras`
-
-This is quicker.
-
-`pip install ipython`
-
-because that is not installed by default (you can skip this if you prefer not to use ipython).
-
-`pip install jupyter`
-
-because my example is a jupyter notebook.
-
-You will also need to install some other packages I am sure you will need:
-
-`pip install matplotlib`
-
-`pip install astropy`
-
-`pip install pandas`
-
-`pip install sklearn`
-
-`pip install seaborn`
-
-and you might have others that you want to use but that should set up you fairly well for deep learning. 
+That should set up you fairly well for a first dip into deep learning. 
 
 
-
-###
+Unfortunately this might not work for you out of the box - in
+particular the dependency of `tensorflow` on `grpcio` can lead to a
+lot of problems on Mac OS. See [this
+discussion](https://github.com/grpc/grpc/issues/30723) for some
+discussion of this. What I ended up doing was installing `grpcio` via
+`conda`. 
 
