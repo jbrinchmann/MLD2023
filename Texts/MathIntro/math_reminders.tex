@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \newcommand{\link}[2]{{\color{blue}\href{#1}{#2}}}
 
+\usepackage{a4wide}
 \usepackage{titling}
 
 \titleformat{\chapter}[display]
@@ -42,37 +43,61 @@
  
  \section{ Reminders of relevant math}
 
-Data mining or machine learning or what you like to call it, does require a fair bit of mathematics as underpinning. While we will not develop our own methods, it is important that you have the basics in place since there will be references to these results during the lectures and during the occasional derivation.
+ Data mining or machine learning or what you like to call it, does
+ require a fair bit of mathematics as underpinning. While we will not
+ develop our own methods, it is important that you have the basics in
+ place since there will be references to these results during the
+ lectures and during the occasional derivation.
 
-This brief document will not replace a text book in linear algebra or numerical analysis of course, but it should suffice for your needs if all you need is a refresher.
+ This brief document will not replace a text book in linear algebra or
+ numerical analysis of course, but it should suffice for your needs if
+ all you need is a refresher.
 
-There will also be frequent examples from the Python numerical library \texttt{numpy} and all examples below will assume that you have imported \texttt{numpy} already. In practice the way I start my session is:
+ There will also be frequent examples from the Python numerical
+ library \texttt{numpy} and all examples below will assume that you
+ have imported \texttt{numpy} already. In practice the way I start my
+ session is:
 \begin{lstlisting}
 
-> ipython
-Python 2.7.12 |Anaconda 2.1.0 (x86_64)| (default, Jul  2 2016, 17:43:17) 
-Type "copyright", "credits" or "license" for more information.
-
-IPython 4.2.0 -- An enhanced Interactive Python.
-?         -> Introduction and overview of IPython's features.
-%quickref -> Quick reference.
-help      -> Python's own help system.
-object?   -> Details about 'object', use 'object??' for extra details.
+(mld2023) > ipython
+Python 3.10.9 (main, Jan 11 2023, 09:18:20) [Clang 14.0.6 ]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.10.0 -- An enhanced Interactive Python. Type '?' for help.
 
 In [1]: import numpy as np
 \end{lstlisting}
 
 \section{ Linear algebra}
 
-A key foundation stone of machine learning is linear algebra, the study of linear equations and their transformations. Many of the methods we study here are conveniently formulated using the language of linear algebra and a good foundation in this area is very useful.
+A key foundation stone of machine learning is linear algebra, the
+study of linear equations and their transformations. Many of the
+methods we study here are conveniently formulated using the language
+of linear algebra and a good foundation in this area is very useful.
 
-Linear algebra typically deals with various dimensional structures. I will refer to scalars, vectors and matrices as 0-dimensional, 1-dimensional and 2-dimensional structures with higher dimensional structures referred to as tensors but there is no need for those here. The notation I will adopt is to use lower-case math italic for scalars: $x$, while vectors will use boldface: $\mathbf{x}$. For matrices I will use an uppercase letter in bold: $\mathbf{A}$. It is convenient to switch between denoting the structures this way and using indices. So the matrix $\mathbf{A}$ has elements $A_{i, j}$, where $1\le i\le n$ and $1 \le j \le m$ if $\mathbf{A}$ is an $n\times m$ matrix. 
+Linear algebra typically deals with various dimensional structures. I
+will refer to scalars, vectors and matrices as 0-dimensional,
+1-dimensional and 2-dimensional structures with higher dimensional
+structures referred to as tensors but there is no need for those
+here. The notation I will adopt is to use lower-case math italic for
+scalars: $x$, while vectors will use boldface: $\mathbf{x}$. For
+matrices I will use an uppercase letter in bold: $\mathbf{A}$. It is
+convenient to switch between denoting the structures this way and
+using indices. So the matrix $\mathbf{A}$ has elements $A_{i, j}$,
+where $1\le i\le n$ and $1 \le j \le m$ if $\mathbf{A}$ is an
+$n\times m$ matrix.
  
 \subsubsection{ The transpose of a matrix}
 
-This is denoted as $\mathbf{A}^T$ and is defined in coordinates as $ [ \left(\mathbf{A}^{T}\right)_{i, j} = {A}_{j, i} ] $. The transpose of a vector is also defined and an $N$ element vector is then transformed into an $1\times N$ element matrix, although it is more common to call it a column vector (assuming that the first index is the row).
+This is denoted as $\mathbf{A}^T$ and is defined in coordinates as
+$ [ \left(\mathbf{A}^{T}\right)_{i, j} = {A}_{j, i} ] $. The transpose
+of a vector is also defined and an $N$ element vector is then
+transformed into an $1\times N$ element matrix, although it is more
+common to call it a column vector (assuming that the first index is
+the row).
 
-Note that in \texttt{numpy} the `transpose` function is somewhat different - it just reverses the axes. This gives unexpected results for vectors. See for instance this code snippet:
+Note that in \texttt{numpy} the `transpose` function is somewhat
+different - it just reverses the axes. This gives unexpected results
+for vectors. See for instance this code snippet:
 \begin{lstlisting}
 
 In [2]: a = np.array([1,2,3])
@@ -80,7 +105,12 @@ In [3]: print a.shape, np.transpose(a).shape
 (3,) (3,)
 \end{lstlisting}
 
-so as you can see, the shape has not changed. In general this is not a problem in \texttt{numpy} but if you want to follow mathematical notation you can use `np.matrix` instead of `np.array`. For general use it is usually best to use `np.array` however, and instead keep an eye out for this potential gotcha.  Note also that `a.T` is a shorthand for `np.transpose(a)` and I will usually use this.
+so as you can see, the shape has not changed. In general this is not a
+problem in \texttt{numpy} but if you want to follow mathematical
+notation you can use `np.matrix` instead of `np.array`. For general
+use it is usually best to use `np.array` however, and instead keep an
+eye out for this potential gotcha.  Note also that `a.T` is a
+shorthand for `np.transpose(a)` and I will usually use this.
 
 
 \subsubsection{ Index games and matrix multiplication}
@@ -244,13 +274,34 @@ where in \texttt{numpy} convention the eigenvector corresponding to the first ei
 \subsubsection{ Singular value decomposition}
 
 
-There are many types of \link{https://en.wikipedia.org/wiki/Matrix_decomposition}{matrix decompositions} and no need to cover all here. The most useful for machine learning is \link{https://en.wikipedia.org/wiki/Singular_value_decomposition}{\textit{singular value decomposition}}- usually referred to via its acronym (SVD). This generalises in some ways the eigendecomposition and is widely used.
+There are many types of
+\link{https://en.wikipedia.org/wiki/Matrix_decomposition}{matrix
+  decompositions} and no need to cover all here. The most useful for
+machine learning is
+\link{https://en.wikipedia.org/wiki/Singular_value_decomposition}{\textit{singular
+    value decomposition}}- usually referred to via its acronym
+(SVD). This generalises in some ways the eigendecomposition and is
+widely used.
 
-The SVD of an $m \times n$ matrix $\mathbf{A}$ can be written as $$\mathbf{A} = \mathbf{U}\mathbf{D}\mathbf{V}^T$$ where $\mathbf{D}$ is an $m\times n$ diagonal matix containing the \textit{singular values} of the matrix $\mathbf{A}$ on the diagonal, $\mathrm{U}$ is a $m\times m$ orhogonal matrix (formed of what is called the left-singular vectors of $\mathrm{A}$)  and $\mathrm{V}$ is a $n\times n$ orthogonal matrix (formed of what is called the right-singular vectors of $\mathrm{A}$).
+The SVD of an $m \times n$ matrix $\mathbf{A}$ can be written
+as $$\mathbf{A} = \mathbf{U}\mathbf{D}\mathbf{V}^T$$ where
+$\mathbf{D}$ is an $m\times n$ diagonal matrix containing the
+\textit{singular values} of the matrix $\mathbf{A}$ on the diagonal,
+$\mathrm{U}$ is a $m\times m$ orhogonal matrix (formed of what is
+called the left-singular vectors of $\mathrm{A}$) and $\mathrm{V}$ is
+a $n\times n$ orthogonal matrix (formed of what is called the
+right-singular vectors of $\mathrm{A}$).
 
-The similarity to the eigendecomposition should be clear but instead of having one matrix of eigenvectors we here have two distinct left- and right-singular matrices. In fact they are even more closely related because the left-singular vectors are the eigenvectors of $\mathbf{A}\mathbf{A}^T$ and the right-singular vectors are the eigenvectors of $\mathbf{A}^T\mathbf{A}$.
+The similarity to the eigendecomposition should be clear but instead
+of having one matrix of eigenvectors we here have two distinct left-
+and right-singular matrices. In fact they are even more closely
+related because the left-singular vectors are the eigenvectors of
+$\mathbf{A}\mathbf{A}^T$ and the right-singular vectors are the
+eigenvectors of $\mathbf{A}^T\mathbf{A}$.
 
-The singular values of a matrix can be calculated in \texttt{numpy} by using \texttt{np.linalg.svd} which returns $\mathrm{U}$, a vector of singular values $\mathrm{s}$ and $\mathrm{V}$:
+The singular values of a matrix can be calculated in \texttt{numpy} by
+using \texttt{np.linalg.svd} which returns $\mathrm{U}$, a vector of
+singular values $\mathrm{s}$ and $\mathrm{V}$:
 
 \begin{lstlisting}
 
