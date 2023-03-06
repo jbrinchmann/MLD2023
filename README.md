@@ -132,7 +132,7 @@ To set things up for this course, what I did (after installing
 anaconda) was
 ```
 # Create an environment
-> conda create -n mld2023 numpy scipy scikit-learn pandas seabornmatplotlib jupyter pip
+> conda create -n mld2023 numpy scipy scikit-learn pandas seaborn matplotlib jupyter astropy pip
 ...
 > conda activate mld2023
 ```
