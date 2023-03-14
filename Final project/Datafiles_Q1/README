@@ -1,0 +1,30 @@
+There are several files here. The file file_info_for_problem.csv
+contains the summary of the observations. It is a CSV file with 7
+columns:
+ 
+      ID: A running ID (unique) for each observation
+ FieldID: The ID number of a particular field observed. Observations of
+          the same field always have the same FieldID.
+Filename: The name of the FITS file containing the image
+  Filter: The filter used.
+     MJD: The modified Julian date of the observations.
+ Airmass: The mean airmass of the observations.
+ Exptime: The exposure time of the image in seconds.
+
+
+The image files are not included and you can assume that those are
+stored in a known location so that only the filename is required to
+keep (this is of course an oversimplification but sufficient for our
+needs here).
+
+For each image there is a corresponding catalogue file with the format
+given in the problem set and repeated below. The catalogue is named
+Filed-<FieldID>-<Filter>.fits for Z, Y, J, and H. Since the Ks band
+can be observed multiple times, it has file names
+Field-<FieldID>-Ks-E<epoch>.fits, where the epoch is a counter o the
+number of observations of the field ordered chronologically. Thus the
+first observation is E001, the second E002 etc.
+
+The catalogues are matched so that row 1 is the same object in all
+catalogues of the same field (this is a big simplification relative to
+a real situation). 
